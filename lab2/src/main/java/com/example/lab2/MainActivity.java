@@ -1,6 +1,7 @@
 package com.example.lab2;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +21,30 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        Log.d("Seminar", "onCreate");
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Log.i("Seminar", "onStart");
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.v("Seminar", "onResume");
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Log.w("Seminar", "onPause");
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Log.e("Seminar", "onStop");
     }
 }
