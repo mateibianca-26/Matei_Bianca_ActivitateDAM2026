@@ -1,7 +1,9 @@
 package com.example.lab2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,4 +49,6 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         Log.e("Seminar", "onStop");
     }
+
+
 }
