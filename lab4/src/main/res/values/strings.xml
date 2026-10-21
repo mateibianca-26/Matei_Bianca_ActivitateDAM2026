@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">lab4</string>
+    <string name="introduceti_numele">Introduceti numele</string>
+    <string name="apasa">apasa</string>
+    <string name="adauga_mobilier">Adauga mobilier</string>
+
+    <string-array name="Lista">
+        <item>Lemn</item>
+        <item>Metal</item>
+        <item>Sticla</item>
+    </string-array>
+</resources>
