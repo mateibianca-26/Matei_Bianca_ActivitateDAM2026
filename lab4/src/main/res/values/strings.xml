@@ -1,12 +1,26 @@
 <resources>
     <string name="app_name">lab4</string>
-    <string name="introduceti_numele">Introduceti numele</string>
-    <string name="apasa">apasa</string>
-    <string name="adauga_mobilier">Adauga mobilier</string>
-
-    <string-array name="Lista">
-        <item>Lemn</item>
+    <string-array name="materiale_array">
+        <item>Lemn Masiv</item>
+        <item>PAL Melaminat</item>
         <item>Metal</item>
         <item>Sticla</item>
     </string-array>
+    <string name="btn_deschide_formular">Adauga Piesa Mobilier</string>
+    <string name="tv_rezultat_initial">Niciun mobilier adaugat inca.</string>
+
+    <string name="titlu_formular">Formular Adaugare Mobilier</string>
+    <string name="hint_denumire">Denumire mobilier</string>
+    <string name="hint_pret">Pret (RON)</string>
+    <string name="label_material">Selectati materialul:</string>
+    <string name="label_confort">Grad de confort / Calitate:</string>
+    <string name="label_stare">Stare produs:</string>
+    <string name="radio_nou">Produs Nou</string>
+    <string name="radio_second">Second Hand</string>
+    <string name="cb_montaj">Montaj asigurat la livrare</string>
+    <string name="sw_stoc">Produs disponibil in stoc</string>
+    <string name="btn_salveaza">Salveaza si Trimite</string>
+
+    <string name="eroare_completare">Completati denumirea si pretul!</string>
+    <string name="toast_succes">Mobilier adaugat:</string>
 </resources>
