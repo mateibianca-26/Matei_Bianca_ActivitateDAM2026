@@ -15,7 +15,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
+    private ArrayList<Mobilier> listaMobilier = new ArrayList<>();
     private static final int REQUEST_CODE_ADAUGARE = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +47,24 @@ public class MainActivity extends AppCompatActivity {
             if (bundle != null) {
                 Mobilier mobilier = (Mobilier) bundle.getSerializable("OBIECT_MOBILIER");
                 if (mobilier != null) {
+                    listaMobilier.add(mobilier);
+
                     TextView tv = findViewById(R.id.rezultat_TV);
-                    tv.setText(mobilier.toString());
+                    tv.setText("Numar elemente salvate: " + listaMobilier.size() + "\n" + mobilier.toString());
 
                     Toast.makeText(this, getString(R.string.toast_succes) + " " + mobilier.getDenumire(), Toast.LENGTH_SHORT).show();
                 }
             }
         }
+    }
+
+    public void deschideLista(View view) {
+        if(listaMobilier.isEmpty()){
+            Toast.makeText(this, "Lista este goala! Adaugati mobilier", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(this, ListaMobilierActivity.class);
+        intent.putExtra("LISTA_MOBILIER", listaMobilier);
+        startActivity(intent);
     }
 }

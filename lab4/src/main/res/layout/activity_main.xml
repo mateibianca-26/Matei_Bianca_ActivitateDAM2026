@@ -15,6 +15,14 @@
         android:onClick="deschideFormular"
         android:text="@string/btn_deschide_formular"/>
 
+    <Button
+        android:id="@+id/btnVeziLista_BT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="deschideLista"
+        android:text="Vizualizeaza lista"/>
+
     <TextView
         android:id="@+id/rezultat_TV"
         android:layout_width="match_parent"

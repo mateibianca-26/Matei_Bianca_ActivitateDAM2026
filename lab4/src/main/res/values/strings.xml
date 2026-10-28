@@ -23,4 +23,6 @@
 
     <string name="eroare_completare">Completati denumirea si pretul!</string>
     <string name="toast_succes">Mobilier adaugat:</string>
+
+    <string name="btn_vezi_lista">Vizualizeaza lista</string>
 </resources>
