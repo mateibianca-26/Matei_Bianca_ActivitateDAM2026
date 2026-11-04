@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -20,6 +21,9 @@ public class ListaMobilierActivity extends AppCompatActivity {
 
     private ListView lvMobiliere;
     private ArrayList<Mobilier> lista;
+
+    private MobilierAdapter adapter;
+    private int pozitieModificata = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,21 +38,19 @@ public class ListaMobilierActivity extends AppCompatActivity {
 
         lvMobiliere = findViewById(R.id.mobiliere_LV);
         Intent intent = getIntent();
-        lista = (ArrayList<Mobilier>) intent.getSerializableExtra("LISTA_MOBILIER");
+        lista = intent.getParcelableArrayListExtra("LISTA_MOBILIER");
 
         if (lista != null) {
-            ArrayAdapter<Mobilier> adapter = new ArrayAdapter<>(
-                    this,
-                    android.R.layout.simple_list_item_1,
-                    lista
-            );
+            adapter = new MobilierAdapter(lista, this, R.layout.item_mobilier);
             lvMobiliere.setAdapter(adapter);
 
             lvMobiliere.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Mobilier mobilierSelectat = lista.get(position);
-                    Toast.makeText(ListaMobilierActivity.this, "Selectat:\n"+mobilierSelectat.toString(), Toast.LENGTH_LONG).show();
+                    pozitieModificata = position;
+                    Intent itModifica = new Intent(ListaMobilierActivity.this, AddMobilierActivity.class);
+                    itModifica.putExtra("MOBILIER_SELECTAT", lista.get(position));
+                    startActivityForResult(itModifica, 209);
                 }
             });
 
@@ -63,6 +65,18 @@ public class ListaMobilierActivity extends AppCompatActivity {
                     return true;
                 }
             });
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == 209 && data != null) {
+            Mobilier mobilierModificat = data.getParcelableExtra("OBIECT_MOBILIER");
+            if (mobilierModificat != null && pozitieModificata != -1) {
+                lista.set(pozitieModificata, mobilierModificat);
+                adapter.notifyDataSetChanged();
+            }
         }
     }
 }

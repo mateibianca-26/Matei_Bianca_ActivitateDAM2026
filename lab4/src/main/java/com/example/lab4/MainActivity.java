@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_CODE_ADAUGARE && resultCode == RESULT_OK && data != null) {
             Bundle bundle = data.getExtras();
             if (bundle != null) {
-                Mobilier mobilier = (Mobilier) bundle.getSerializable("OBIECT_MOBILIER");
+                Mobilier mobilier = bundle.getParcelable("OBIECT_MOBILIER");
                 if (mobilier != null) {
                     listaMobilier.add(mobilier);
 
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         Intent intent = new Intent(this, ListaMobilierActivity.class);
-        intent.putExtra("LISTA_MOBILIER", listaMobilier);
+        intent.putParcelableArrayListExtra("LISTA_MOBILIER", listaMobilier);
         startActivity(intent);
     }
 }

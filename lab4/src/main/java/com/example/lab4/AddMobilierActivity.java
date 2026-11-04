@@ -3,6 +3,7 @@ package com.example.lab4;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -27,6 +28,22 @@ public class AddMobilierActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Intent it = getIntent();
+        if (it != null && it.hasExtra("MOBILIER_SELECTAT")) {
+            Mobilier m = it.getParcelableExtra("MOBILIER_SELECTAT");
+            if (m != null) {
+                EditText etDenumire = findViewById(R.id.denumire_ET);
+                EditText etPret = findViewById(R.id.pret_ET);
+                CheckBox cbMontaj = findViewById(R.id.montaj_CB);
+                Switch swStoc = findViewById(R.id.inStoc_SW);
+
+                etDenumire.setText(m.getDenumire());
+                etPret.setText(String.valueOf(m.getPret()));
+                cbMontaj.setChecked(m.isMontajInclus());
+                swStoc.setChecked(m.isInStoc());
+            }
+        }
     }
 
     public void culegeSiTrimiteDate(View view) {
@@ -54,7 +71,7 @@ public class AddMobilierActivity extends AppCompatActivity {
 
         Intent it = new Intent();
         Bundle bundle = new Bundle();
-        bundle.putSerializable("OBIECT_MOBILIER", mobilier);
+        bundle.putParcelable("OBIECT_MOBILIER", mobilier);
         it.putExtras(bundle);
 
         setResult(RESULT_OK, it);
