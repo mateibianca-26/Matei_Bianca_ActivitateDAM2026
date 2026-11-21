@@ -26,3 +26,4 @@ rootProject.name = "SeminarDAM"
 include(":app")
 include(":lab2")
 include(":lab4")
+include(":lab8")
